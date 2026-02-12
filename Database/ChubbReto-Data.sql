@@ -1,6 +1,7 @@
-DROP TABLE Books;
-DROP TABLE Authors;
-DROP TABLE Genres;
+CREATE DATABASE CHUBB_RETO;
+GO
+
+USE CHUBB_RETO;
 
 CREATE TABLE Authors(
 	AuthorId int identity(1,1) not null,
