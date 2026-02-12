@@ -1,0 +1,62 @@
+﻿@model IEnumerable<ChubbReto.Application.Books.ListBookFullDto>
+
+@{
+    ViewBag.Title = "Libros";
+}
+
+<div class="container mt-4">
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <h2>Listado de Libros</h2>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+            @Html.ActionLink(
+                          "Nuevo Libro",
+                          "Create",
+                          "Libros",
+                          null,
+                          new { @class = "btn btn-primary" })
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+
+            @if (Model != null && Model.Any())
+            {
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Título</th>
+                            <th>Año</th>
+                            <th>Autor</th>
+                            <th>Género</th>
+                            <th>Páginas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var book in Model)
+                        {
+                            <tr>
+                                <td>@book.Title</td>
+                                <td>@book.Year</td>
+                                <td>@book.Author</td>
+                                <td>@book.Genre</td>
+                                <td>@(book.NumberOfPages)</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    No existen libros registrados.
+                </div>
+            }
+
+        </div>
+    </div>
+
+</div>

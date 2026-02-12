@@ -1,0 +1,59 @@
+﻿@model IEnumerable<ChubbReto.Application.Authors.ListAuthorFullDto>
+
+@{
+    ViewBag.Title = "Autores";
+}
+
+<div class="container mt-4">
+
+    <div class="row mb-3 d-flex">
+        <div class="col-md-6">
+            <h2>Listado de Autores</h2>
+        </div>
+        <div class="col-md-6 d-flex justify-content-end">
+            @Html.ActionLink(
+                "Nuevo Autor",
+                "Create",
+                "Autores",
+                null,
+                new { @class = "btn btn-primary" })
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+
+            @if (Model != null && Model.Any())
+            {
+                <table class="table table-bordered table-striped table-hover">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Nombre Completo</th>
+                            <th>Fecha de Nacimiento</th>
+                            <th>Ciudad de procedencia</th>
+                            <th>Correo electrónico</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var author in Model)
+                        {
+                            <tr>
+                                <td>@author.FullName</td>
+                                <td>@author.BithDate.ToString("dd/MM/yyyy")</td>
+                                <td>@author.CityOfOrigin</td>
+                                <td>@author.Email</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    No existen autores registrados.
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
